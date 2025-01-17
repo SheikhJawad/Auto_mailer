@@ -1,0 +1,46 @@
+# Python virtual environment
+Lib/
+Scripts/
+pyvenv.cfg
+venv/
+env/
+.env
+
+# Configuration files
+
+*.ini
+*.cfg
+*.conf
+
+# Database files
+*.sqlite
+*.sqlite3
+*.db
+database/*.sqlite
+database/*.db
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# IDE settings
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local development settings
+.env.local
+.env.development
+.env.test
+.env.production
+
+# Logs
+*.log
+logs/
