@@ -92,12 +92,12 @@ Your `.env` file must include:
 
 Example:
 ```
-SMTP_SERVER=mail.deutics.com
-SMTP_PORT=465
-SMTP_USERNAME=muhammad.jawad@deutics.com
+SMTP_SERVER=mail.gmail.com
+SMTP_PORT=123
+SMTP_USERNAME=xyz1@gmail.com
 SMTP_PASSWORD=your_password
-EXCEL_PATH=Z:\Deutics\Auto_mailer\emails\emails.csv
-DB_PATH=Z:\Deutics\Auto_mailer\database\database.sqlite
+EXCEL_PATH= your excel file path in which you have all emails and company names
+DB_PATH=your db sqlite file path
 ```
 
 ## Key Components
