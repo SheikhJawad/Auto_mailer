@@ -1,71 +1,3 @@
-# from database.db import EmailDatabase
-# from utils.excel_handler import ExcelHandler
-# from utils.email_sender import EmailSender
-# from utils.file_watcher import start_file_watcher
-# from config.settings import DB_PATH, EXCEL_PATH
-# from templates.email_templates import * 
-# import time
-# import random
-
-# class EmailAutomation:
-#     def __init__(self):
-#         self.db = EmailDatabase(DB_PATH)
-#         self.excel_handler = ExcelHandler(EXCEL_PATH)
-#         self.email_sender = EmailSender()
-        
-#     def get_random_template(self):
-#         if EMAIL_TEMPLATES:
-#             template = random.choice(EMAIL_TEMPLATES)
-#             return template.get('subject', ''), template.get('body', '')
-#         return None, None
-        
-#     def process_new_clients(self):
-#         print("Processing new clients...")
-#         unsent_clients = self.excel_handler.get_unsent_clients(self.db)
-
-#         if unsent_clients:
-#             print(f"Found {len(unsent_clients)} new clients to process")
-#             self.email_sender.connect()
-#             try:
-#                 for client in unsent_clients:
-#                     subject, body = self.get_random_template()
-#                     if subject and body:
-#                         company_name = client.get('company_name', 'Valued Client')  # Get company name for email
-#                         print(f"Sending email to: {client['emails']} (Company: {company_name})")
-                        
-#                         self.email_sender.send_email(
-#                             client['emails'],
-#                             subject,
-#                             body,
-#                             company_name  # Pass company name here
-#                         )
-#                         self.db.record_sent_email(client['emails'], 0)  
-
-        
-#                         delay = random.randint(30, 90)
-#                         print(f"Waiting {delay} seconds before next email...")
-#                         time.sleep(delay)
-#                     else:
-#                         print("No email template available")
-#             except Exception as e:
-#                 print(f"Error processing clients: {str(e)}")
-#             finally:
-#                 self.email_sender.disconnect()
-#         else:
-#             print("No new clients to process")
-
-            
-#     def run(self):
-#         observer = start_file_watcher(EXCEL_PATH, self.process_new_clients)
-#         try:
-#             while True:
-#                 self.process_new_clients()
-#                 delay = random.randint(1800, 3600)
-#                 print(f"Waiting for next check cycle ({delay/60:.1f} minutes)...")
-#                 time.sleep(delay)
-#         except KeyboardInterrupt:
-#             observer.stop()
-#         observer.join()
 from database.db import EmailDatabase
 from utils.excel_handler import ExcelHandler
 from utils.email_sender import EmailSender
@@ -144,7 +76,7 @@ class EmailAutomation:
                     print(f"\nWaiting until {email['send_time'].strftime('%H:%M:%S')} to send next email...")
                     time.sleep(wait_time)
 
-                # Prepare next email info if available
+              
                 next_email_info = None
                 if i < len(email_queue) - 1:
                     next_email_info = email_queue[i + 1]

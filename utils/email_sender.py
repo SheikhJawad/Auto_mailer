@@ -1,84 +1,3 @@
-
-# import smtplib
-# from email.mime.text import MIMEText
-# from email.mime.multipart import MIMEMultipart
-# from config.settings import SMTP_SERVER, SMTP_PORT, SMTP_USERNAME, SMTP_PASSWORD
-# import random
-# import time
-# from datetime import datetime, timedelta
-
-# class EmailSender:
-#     def __init__(self):
-#         self.server = None
-#         self.queue = []
-
-#     def connect(self):
-#         try:
-#             print("Attempting to connect to the SMTP server using SSL...")
-#             self.server = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
-#             self.server.login(SMTP_USERNAME, SMTP_PASSWORD)
-#             print("Connection to the SMTP server established successfully.")
-#         except smtplib.SMTPException as e:
-#             print(f"Failed to connect to the SMTP server: {e}")
-#             raise SystemExit("Terminating due to SMTP connection failure.")
-
-#     def disconnect(self):
-#         if self.server:
-#             try:
-#                 self.server.quit()
-#                 print("Disconnected from the SMTP server.")
-#             except smtplib.SMTPException as e:
-#                 print(f"Failed to disconnect cleanly: {e}")
-
-#     def set_email_queue(self, emails):
-#         """Set the queue of emails to be sent"""
-#         self.queue = emails
-
-#     def send_email(self, recipient, subject, body, company_name):
-#         try:
-#             if not self.server:
-#                 raise ValueError("Server connection is not established.")
-            
-          
-#             current_index = next((i for i, email in enumerate(self.queue) 
-#                                 if email['email'] == recipient), -1)
-            
- 
-#             print(f"\nSending email to: {recipient} (Company: {company_name})")
-            
-#             if current_index < len(self.queue) - 1:
-#                 next_email = self.queue[current_index + 1]
-
-#                 wait_time = random.randint(60, 600)
-#                 next_send_time = datetime.now() + timedelta(seconds=wait_time)
-#                 minutes = wait_time // 60
-#                 seconds = wait_time % 60
-                
-#                 print(f"Next upcoming email:")
-#                 print(f"→ Recipient: {next_email['email']}")
-#                 print(f"→ Company: {next_email['company_name']}")
-#                 print(f"→ Will be sent at: {next_send_time.strftime('%H:%M:%S')}")
-#                 print(f"→ Scheduled after: {minutes} minutes")
-
-#             body = body.format(company_name=company_name)
-            
-
-#             msg = MIMEMultipart()
-#             msg['From'] = SMTP_USERNAME
-#             msg['To'] = recipient
-#             msg['Subject'] = subject
-#             msg.attach(MIMEText(body, 'html'))
-#             self.server.send_message(msg)
-#             print(f"Email sent to {recipient} successfully.")
-
-#             if current_index < len(self.queue) - 1:
-#                 print(f"Waiting {minutes} minutes before sending next email...")
-#                 time.sleep(wait_time)
-                
-#         except smtplib.SMTPException as e:
-#             print(f"Failed to send email to {recipient}: {e}")
-#         except ValueError as ve:
-#             print(ve)
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
@@ -191,7 +110,7 @@ class EmailSender:
                     print(f"→ Recipient: {next_email_info['email']}")
                     print(f"→ Company: {next_email_info['company_name']}")
                     print(f"→ Will be sent at: {next_email_info['send_time'].strftime('%H:%M:%S')}")
-                    print(f"\nWaiting until {next_email_info['send_time'].strftime('%H:%M:%S')} to send next email...")
+                    # print(f"\nWaiting until {next_email_info['send_time'].strftime('%H:%M:%S')} to send next email...")
                 
                 return True
 
